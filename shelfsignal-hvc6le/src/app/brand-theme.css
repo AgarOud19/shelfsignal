@@ -1,0 +1,87 @@
+/* @polsia:user-owned — the app's visual theme. Edit freely; write it, don't tune it.
+ *
+ * globals.css imports this file LAST and keeps its own fallback inside
+ * `@layer base`, so any unlayered `:root` / `.dark` rule written here wins the
+ * cascade without `!important`. An empty file leaves the neutral, achromatic
+ * fallback in place — which is the "unfinished" look, not a design.
+ *
+ * Write the modes `colorTheme` in src/lib/color-theme.ts declares: a 'light'
+ * site needs no `.dark` block; a 'dark' site designs only its dark look (in
+ * `:root`); a 'system' site designs both and follows the visitor's OS.
+ *
+ * Every semantic role is independently settable in each mode (light and dark do
+ * NOT have to be the same hue, and accent does not have to be a tint of primary):
+ *   --background / --foreground, --card / --card-foreground,
+ *   --popover / --popover-foreground, --primary / --primary-foreground,
+ *   --secondary / --secondary-foreground, --muted / --muted-foreground,
+ *   --accent / --accent-foreground, --destructive, --border, --input, --ring,
+ *   the optional --brand-50..900 ramp, --elevation-1..3 and --shadow-brand-color.
+ *
+ * Typography: --font-body, --font-display (load the files first — see
+ * AGENTS.md "Fonts"), plus --text-display / --text-h1 … --text-caption and their
+ * --text-<step>--line-height / --font-weight / --letter-spacing companions.
+ * Shape and density: --radius (drives the ramp) or individual
+ * --radius-sm/md/lg/xl/2xl, --spacing-stack/block/gutter/section/section-lg,
+ * --container-page. A `@theme { … }` block here can also add or replace
+ * Tailwind utility tokens (new colors, sizes, shadows).
+ *
+ * Shape of a theme — the values are placeholders, not a suggested look. Derive
+ * them from the brief and the references you inspected; nothing in this starter
+ * is a customer choice. The fallback page color is not a suggestion either —
+ * pick the background from the references, not a default off-white:
+ *
+ *   :root {
+ *     --background: <page>; --foreground: <text on page>; --card: <surface>;
+ *     --primary: <action>; --primary-foreground: <text on action>;
+ *     --accent: <secondary emphasis>; --accent-foreground: <text on accent>;
+ *     --border: <hairline>; --ring: <focus>;
+ *     --font-display: "<display family>", <fallback stack>;
+ *     --font-body: "<body family>", <fallback stack>;
+ *   }
+ *   .dark { …the same roles; hues may differ from light mode… }
+ *
+ * Load a Google Fonts family you chose with `npm run font:add -- "<Family>" 400 700`
+ * (self-hosted, CSP-safe); if it fails, fix it — never swap in another family.
+ *
+ * Set the matching foreground for every surface you change and check contrast in
+ * both modes; nothing here validates colors for you.
+ */
+
+:root {
+  --background: #f3f0e7;
+  --foreground: #262922;
+  --card: #ebe6db;
+  --card-foreground: #262922;
+  --popover: #f7f4ec;
+  --popover-foreground: #262922;
+  --primary: #262922;
+  --primary-foreground: #f3f0e7;
+  --secondary: #ebe6db;
+  --secondary-foreground: #262922;
+  --muted: #ebe6db;
+  --muted-foreground: #6f7067;
+  --accent: #e5d8ca;
+  --accent-foreground: #262922;
+  --destructive: #a75b3e;
+  --border: #d8d1c4;
+  --input: #d8d1c4;
+  --ring: #a75b3e;
+  --radius: 0.25rem;
+  --font-display: "Inter Tight", "Arial Narrow", sans-serif;
+  --font-body: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-editorial: "EB Garamond", Georgia, serif;
+  --brand-50: #f8f4ec;
+  --brand-100: #f0e5d6;
+  --brand-200: #e5d1bb;
+  --brand-300: #d3b193;
+  --brand-400: #c18b66;
+  --brand-500: #a75b3e;
+  --brand-600: #8d4a33;
+  --brand-700: #713b2d;
+  --brand-800: #58312a;
+  --brand-900: #3d2824;
+  --elevation-1: rgb(45 38 28 / 6%);
+  --elevation-2: rgb(45 38 28 / 10%);
+  --elevation-3: rgb(45 38 28 / 14%);
+  --shadow-brand-color: rgb(167 91 62 / 28%);
+}
